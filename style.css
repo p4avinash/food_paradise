@@ -1,9 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  /* margin: 10px; */
   padding: 0px 10px;
-  /* border: 1px solid black; */
   border-radius: 10px;
   box-shadow: 0px 5px 8px #888888;
 }
@@ -34,20 +32,49 @@
 .restaurant-list {
   display: flex;
   margin-top: 2rem;
+  padding: 1rem;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
 }
 
 .card {
-  width: 200px;
-  border: 1px solid black;
+  width: 273px;
   padding: 10px;
   word-wrap: break-word;
+  box-shadow: 0px 3px 5px #888888;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card:hover {
+  transition: all ease 0.2s;
+  transform: scale(0.9);
 }
 
 .card > img {
   width: 100%;
   height: 150px;
   object-fit: cover;
+}
+
+.restaurant-name {
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+.restaurant-cuisines {
+  font-size: 1.1rem;
+  color: #585858;
+}
+
+.other-details {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.other-details > p {
+  margin-right: 1rem;
+  font-weight: 600;
 }
