@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { IMG_CDN_URL } from "../constants"
 
 const RestaurantCard = ({ restaurant }) => {
@@ -12,10 +11,10 @@ const RestaurantCard = ({ restaurant }) => {
     <div className='card'>
       <img src={imageUrl} alt='food-image' />
       <p className='restaurant-name'>
-        {name.length <= 25 ? name : `${name.substring(0, 20)}...`}
+        {name.length <= 20 ? name : `${name.substring(0, 20)}...`}
       </p>
       <p className='restaurant-cuisines'>
-        {cuisines.join(", ").length <= 45
+        {cuisines.join(", ").length <= 40
           ? cuisines.join()
           : `${cuisines.join().substring(0, 30)}...`}
       </p>

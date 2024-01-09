@@ -45,6 +45,7 @@
   box-shadow: 0px 3px 5px #888888;
   border-radius: 5px;
   cursor: pointer;
+  line-height: 1rem;
 }
 
 .card:hover {
@@ -56,6 +57,7 @@
   width: 100%;
   height: 150px;
   object-fit: cover;
+  border-radius: 5px;
 }
 
 .restaurant-name {
@@ -77,4 +79,47 @@
 .other-details > p {
   margin-right: 1rem;
   font-weight: 600;
+}
+
+.shimmer-card {
+  width: 273px;
+  padding: 10px;
+  word-wrap: break-word;
+  box-shadow: 0px 3px 5px #888888;
+  border-radius: 5px;
+  cursor: pointer;
+  line-height: 1rem;
+}
+
+.shimmer-img {
+  background-color: rgb(189, 189, 189);
+  width: 100%;
+  height: 150px;
+  border-radius: 5px;
+}
+
+.shimmer-name {
+  background-color: rgb(189, 189, 189);
+  width: 100%;
+  height: 20px;
+}
+
+.shimmer-cuisines {
+  background-color: rgb(189, 189, 189);
+  width: 100%;
+  height: 20px;
+}
+
+.shimmer-other-details {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.shimmer-other-details > p {
+  margin-right: 1rem;
+  font-weight: 600;
+  background-color: rgb(189, 189, 189);
+  width: 100%;
+  height: 20px;
 }
