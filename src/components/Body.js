@@ -1,19 +1,21 @@
 import RestaurantCard from "./RestaurantCard"
-import { restaurantsList } from "../constants"
 import { useState, useEffect } from "react"
 import Shimmer from "./Shimmer"
+import { filterData } from "./utils"
+import SearchBox from "./Searchbox"
 
-function filterData(searchText, restaurantList) {
-  const filteredData = restaurantList.filter((item) =>
-    item.info.name.toLowerCase().includes(searchText.toLowerCase())
-  )
+// function filterData(searchText, restaurantList) {
+//   const filteredData = restaurantList.filter((item) =>
+//     item?.info?.name.toLowerCase().includes(searchText.toLowerCase())
+//   )
 
-  return filteredData
-}
+//   return filteredData
+// }
 
 const Body = () => {
-  const [searchText, setSearchText] = useState("")
-  const [restaurantList, setRestaurantList] = useState([])
+  // const [searchText, setSearchText] = useState("")
+  const [filteredRestaurantList, setFilteredRestaurantList] = useState([])
+  const [allRestaurantList, setAllRestaurantList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -28,55 +30,20 @@ const Body = () => {
       const data = await response.json()
       const restaurantData =
         data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants || restaurantsList
+          ?.restaurants || filteredRestaurantList
 
-      setRestaurantList(restaurantData)
+      setFilteredRestaurantList(restaurantData)
+      setAllRestaurantList(restaurantData)
       setIsLoading(false)
     } catch (error) {
       console.log("Something went wrong")
     }
   }
 
-  return (
-    <>
-      {isLoading ? (
-        <Shimmer />
-      ) : (
-        <div>
-          <div className='search-container'>
-            <input
-              type='text'
-              name='search'
-              placeholder='Search'
-              className='search-input'
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-            />
-            <button
-              type='button'
-              className='search-btn'
-              onClick={() => {
-                const data = filterData(searchText, restaurantList)
-                setRestaurantList(data)
-              }}
-            >
-              Search
-            </button>
-          </div>
-          <div className='restaurant-list'>
-            {restaurantList.map((restaurant) => {
-              return (
-                <div key={restaurant.info.id}>
-                  <RestaurantCard restaurant={restaurant} />
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      )}
-
-      {/* <div>
-        <div className='search-container'>
+  if (filteredRestaurantList.length == 0 && allRestaurantList.length > 0) {
+    return (
+      <div>
+        {/* <div className='search-container'>
           <input
             type='text'
             name='search'
@@ -89,23 +56,65 @@ const Body = () => {
             type='button'
             className='search-btn'
             onClick={() => {
-              const data = filterData(searchText, restaurantList)
-              setRestaurantList(data)
+              const data = filterData(searchText, allRestaurantList)
+              setFilteredRestaurantList(data)
             }}
           >
             Search
           </button>
-        </div>
-        <div className='restaurant-list'>
-          {restaurantList.map((restaurant) => {
-            return (
-              <div key={restaurant.info.id}>
-                <RestaurantCard restaurant={restaurant} />
-              </div>
-            )
-          })}
-        </div>
+        </div> */}
+        <SearchBox
+          allRestaurantList={allRestaurantList}
+          setFilteredRestaurantList={setFilteredRestaurantList}
+        />
+        <h1>Nothing matched your search...</h1>
+      </div>
+    )
+  }
+
+  return (
+    <>
+      {/* <div className='search-container'>
+        <input
+          type='text'
+          name='search'
+          placeholder='Search'
+          className='search-input'
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+        <button
+          type='button'
+          className='search-btn'
+          onClick={() => {
+            const data = filterData(searchText, allRestaurantList)
+            setFilteredRestaurantList(data)
+          }}
+        >
+          Search
+        </button>
       </div> */}
+
+      <SearchBox
+        allRestaurantList={allRestaurantList}
+        setFilteredRestaurantList={setFilteredRestaurantList}
+      />
+
+      {isLoading ? (
+        <Shimmer />
+      ) : (
+        <div>
+          <div className='restaurant-list'>
+            {filteredRestaurantList.map((restaurant) => {
+              return (
+                <div key={restaurant.info.id}>
+                  <RestaurantCard restaurant={restaurant} />
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      )}
     </>
   )
 }
