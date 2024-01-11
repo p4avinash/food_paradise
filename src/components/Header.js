@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Logo from "../assets/img/food_paradise.png"
 
 const loggedInUser = () => {
   // API call to authenticate user
@@ -8,12 +9,7 @@ const loggedInUser = () => {
 const Title = () => {
   return (
     <a className='logo-link' href='/'>
-      <img
-        src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV5zuo3igQnNdcRxNtyyjvFBn9v8qCfIUTYXFBbHTHbNSUiz2qrNB_QpRSzt_Qs19XrkA&usqp=CAU'
-        id='logo'
-        alt='logo'
-        className='logo'
-      />
+      <img src={Logo} id='logo' alt='logo' className='logo' />
     </a>
   )
 }
@@ -29,13 +25,17 @@ const Header = () => {
           <li>About</li>
           <li>Contact</li>
           <li>Cart</li>
+          {isLoggedIn ? (
+            <button className='auth-btn' onClick={() => setIsLoggedIn(false)}>
+              Logout
+            </button>
+          ) : (
+            <button className='auth-btn' onClick={() => setIsLoggedIn(true)}>
+              Login
+            </button>
+          )}
         </ul>
       </div>
-      {isLoggedIn ? (
-        <button onClick={() => setIsLoggedIn(false)}>Logout</button>
-      ) : (
-        <button onClick={() => setIsLoggedIn(true)}>Login</button>
-      )}
     </div>
   )
 }

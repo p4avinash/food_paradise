@@ -4,6 +4,9 @@ import Shimmer from "./Shimmer"
 import { filterData } from "./utils"
 import SearchBox from "./Searchbox"
 
+const proxyUrl = "https://pacific-badlands-15182.herokuapp.com/"
+const apiUrl = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.1451947&lng=85.3689199&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+
 // function filterData(searchText, restaurantList) {
 //   const filteredData = restaurantList.filter((item) =>
 //     item?.info?.name.toLowerCase().includes(searchText.toLowerCase())
@@ -24,13 +27,13 @@ const Body = () => {
 
   async function getRestaurants() {
     try {
-      const response = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.1451947&lng=85.3689199&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      )
+      const response = await fetch(apiUrl)
       const data = await response.json()
       const restaurantData =
         data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants || filteredRestaurantList
+          ?.restaurants ||
+        data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
 
       setFilteredRestaurantList(restaurantData)
       setAllRestaurantList(restaurantData)
