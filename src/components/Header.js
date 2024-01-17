@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Logo from "../assets/img/food_paradise.png"
+import { Link } from "react-router-dom"
 
 const loggedInUser = () => {
   // API call to authenticate user
@@ -20,17 +21,32 @@ const Header = () => {
     <div className='header'>
       <Title />
       <div className='nav-items'>
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Cart</li>
+        <ul className='nav-items-ul'>
+          <Link to='/'>
+            <li className='list-item'>Home</li>
+          </Link>
+          <Link to='/about'>
+            <li className='list-item'>About</li>
+          </Link>
+          <Link to='/contact'>
+            <li className='list-item'>Contact</li>
+          </Link>
+          <Link to='/cart'>
+            <li className='list-item'>Cart</li>
+          </Link>
+
           {isLoggedIn ? (
-            <button className='auth-btn' onClick={() => setIsLoggedIn(false)}>
+            <button
+              className='auth-btn list-item'
+              onClick={() => setIsLoggedIn(false)}
+            >
               Logout
             </button>
           ) : (
-            <button className='auth-btn' onClick={() => setIsLoggedIn(true)}>
+            <button
+              className='auth-btn list-item'
+              onClick={() => setIsLoggedIn(true)}
+            >
               Login
             </button>
           )}

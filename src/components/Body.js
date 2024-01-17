@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import Shimmer from "./Shimmer"
 import { filterData } from "./utils"
 import SearchBox from "./Searchbox"
+import { Link } from "react-router-dom"
 
 const proxyUrl = "https://pacific-badlands-15182.herokuapp.com/"
 const apiUrl = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.1451947&lng=85.3689199&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
@@ -110,9 +111,14 @@ const Body = () => {
           <div className='restaurant-list'>
             {filteredRestaurantList.map((restaurant) => {
               return (
-                <div key={restaurant.info.id}>
-                  <RestaurantCard restaurant={restaurant} />
-                </div>
+                <Link
+                  key={restaurant.info.id}
+                  to={`/restaurant/${restaurant.info.id}`}
+                >
+                  <div key={restaurant.info.id}>
+                    <RestaurantCard restaurant={restaurant} />
+                  </div>
+                </Link>
               )
             })}
           </div>
