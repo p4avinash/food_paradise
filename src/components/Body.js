@@ -1,12 +1,15 @@
 import RestaurantCard from "./RestaurantCard"
 import { useState, useEffect } from "react"
 import Shimmer from "./Shimmer"
-import { filterData } from "./utils"
+import { filterData, getGeoLocationData } from "./utils"
 import SearchBox from "./Searchbox"
 import { Link } from "react-router-dom"
 
+const { latitude, longitude } = getGeoLocationData()
+
 const proxyUrl = "https://pacific-badlands-15182.herokuapp.com/"
-const apiUrl = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.1451947&lng=85.3689199&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+
+const apiUrl = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${latitude}&lng=${longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
 
 // function filterData(searchText, restaurantList) {
 //   const filteredData = restaurantList.filter((item) =>
