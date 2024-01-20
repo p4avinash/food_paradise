@@ -1,26 +1,11 @@
 import RestaurantCard from "./RestaurantCard"
 import { useState, useEffect } from "react"
 import Shimmer from "./Shimmer"
-import { filterData, getGeoLocationData } from "./utils"
+import { fetchCurrentLocation } from "./utils"
 import SearchBox from "./Searchbox"
 import { Link } from "react-router-dom"
 
-const { latitude, longitude } = getGeoLocationData()
-
-const proxyUrl = "https://pacific-badlands-15182.herokuapp.com/"
-
-const apiUrl = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${latitude}&lng=${longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
-
-// function filterData(searchText, restaurantList) {
-//   const filteredData = restaurantList.filter((item) =>
-//     item?.info?.name.toLowerCase().includes(searchText.toLowerCase())
-//   )
-
-//   return filteredData
-// }
-
 const Body = () => {
-  // const [searchText, setSearchText] = useState("")
   const [filteredRestaurantList, setFilteredRestaurantList] = useState([])
   const [allRestaurantList, setAllRestaurantList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -31,6 +16,11 @@ const Body = () => {
 
   async function getRestaurants() {
     try {
+      const coordinates = await fetchCurrentLocation()
+      console.log("coordinates", coordinates)
+
+      let apiUrl = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${coordinates?.latitude}&lng=${coordinates?.longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+
       const response = await fetch(apiUrl)
       const data = await response.json()
       const restaurantData =
@@ -50,26 +40,6 @@ const Body = () => {
   if (filteredRestaurantList.length == 0 && allRestaurantList.length > 0) {
     return (
       <div>
-        {/* <div className='search-container'>
-          <input
-            type='text'
-            name='search'
-            placeholder='Search'
-            className='search-input'
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-          />
-          <button
-            type='button'
-            className='search-btn'
-            onClick={() => {
-              const data = filterData(searchText, allRestaurantList)
-              setFilteredRestaurantList(data)
-            }}
-          >
-            Search
-          </button>
-        </div> */}
         <SearchBox
           allRestaurantList={allRestaurantList}
           setFilteredRestaurantList={setFilteredRestaurantList}
@@ -81,27 +51,6 @@ const Body = () => {
 
   return (
     <>
-      {/* <div className='search-container'>
-        <input
-          type='text'
-          name='search'
-          placeholder='Search'
-          className='search-input'
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-        />
-        <button
-          type='button'
-          className='search-btn'
-          onClick={() => {
-            const data = filterData(searchText, allRestaurantList)
-            setFilteredRestaurantList(data)
-          }}
-        >
-          Search
-        </button>
-      </div> */}
-
       <SearchBox
         allRestaurantList={allRestaurantList}
         setFilteredRestaurantList={setFilteredRestaurantList}
