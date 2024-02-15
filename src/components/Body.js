@@ -1,9 +1,10 @@
 import RestaurantCard from "./RestaurantCard"
 import { useState, useEffect } from "react"
 import Shimmer from "./Shimmer"
-import { fetchCurrentLocation } from "./utils"
+import { fetchCurrentLocation } from "../utils/utils"
 import SearchBox from "./Searchbox"
 import { Link } from "react-router-dom"
+import useIsOnline from "../utils/useIsOnline"
 
 const Body = () => {
   const [filteredRestaurantList, setFilteredRestaurantList] = useState([])
@@ -17,7 +18,7 @@ const Body = () => {
   async function getRestaurants() {
     try {
       const coordinates = await fetchCurrentLocation()
-      console.log("coordinates", coordinates)
+      // console.log("coordinates-Body", coordinates)
 
       let apiUrl = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${coordinates?.latitude}&lng=${coordinates?.longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
 
@@ -35,6 +36,12 @@ const Body = () => {
     } catch (error) {
       console.log("Something went wrong")
     }
+  }
+
+  const isOnline = useIsOnline()
+
+  if (!isOnline) {
+    return <h1>🔴 Offline, Please check you internet connection</h1>
   }
 
   if (filteredRestaurantList.length == 0 && allRestaurantList.length > 0) {

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { filterData } from "./utils"
+import { filterData } from "../utils/utils"
 
 const SearchBox = ({ allRestaurantList, setFilteredRestaurantList }) => {
   const [searchText, setSearchText] = useState("")

@@ -34,6 +34,9 @@ const Header = () => {
           <Link to='/cart'>
             <li className='list-item'>Cart</li>
           </Link>
+          <Link to='/instamart'>
+            <li className='list-item'>Instamart</li>
+          </Link>
 
           {isLoggedIn ? (
             <button
