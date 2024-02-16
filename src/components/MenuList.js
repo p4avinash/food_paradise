@@ -23,7 +23,7 @@ const MenuList = ({ restaurantMenu }) => {
 
   return (
     <div>
-      <h1>Menulist</h1>
+      <h1 className='text-black font-bold text-2xl mb-4 mt-10'>Menulist</h1>
       <ul>
         {allMenuItems.map((item, index) => {
           return <li key={index}>{item?.card?.info?.name}</li>

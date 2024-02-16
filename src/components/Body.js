@@ -67,7 +67,7 @@ const Body = () => {
         <Shimmer />
       ) : (
         <div>
-          <div className='restaurant-list'>
+          <div className='restaurant-list justify-center drop-shadow-xl grid-rows-3 gap-2 flex  flex-wrap mt-4 p-4'>
             {filteredRestaurantList.map((restaurant) => {
               return (
                 <Link

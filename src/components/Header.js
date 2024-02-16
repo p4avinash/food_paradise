@@ -9,8 +9,8 @@ const loggedInUser = () => {
 
 const Title = () => {
   return (
-    <a className='logo-link' href='/'>
-      <img src={Logo} id='logo' alt='logo' className='logo' />
+    <a className='logo-link ' href='/'>
+      <img src={Logo} id='logo' alt='logo' className='logo h-28 p-2' />
     </a>
   )
 }
@@ -18,10 +18,10 @@ const Title = () => {
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   return (
-    <div className='header'>
+    <div className='header bg-white flex p-1 items-center rounded-2xl justify-between shadow-xl mb-12 mt-2'>
       <Title />
-      <div className='nav-items'>
-        <ul className='nav-items-ul'>
+      <div className='nav-items p-2'>
+        <ul className='nav-items-ul flex space-x-3'>
           <Link to='/'>
             <li className='list-item'>Home</li>
           </Link>
