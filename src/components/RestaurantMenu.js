@@ -7,6 +7,7 @@ import useRestaurant from "../utils/useRestaurant"
 const RestaurantMenu = () => {
   const { id } = useParams()
   const { restaurantData, restaurantMenu, notifier } = useRestaurant(id)
+  console.log(restaurantData)
 
   if (restaurantData.length === 0) {
     return <Shimmer />
@@ -49,6 +50,13 @@ const RestaurantMenu = () => {
           <h4 className='text-black font-bold mt-2 flex justify-center'>
             {restaurantData?.costForTwoMessage}
           </h4>
+          <p className='font-bold mt-2'>
+            {`${
+              restaurantData?.sla?.minDeliveryTime
+                ? "⏱ " + restaurantData?.sla?.minDeliveryTime + " MINS"
+                : ""
+            }`}
+          </p>
         </div>
       </div>
       <div className='restaurant-menu'>

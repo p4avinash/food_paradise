@@ -10,7 +10,7 @@ const Shimmer = () => {
             key={index}
             className='shimmer-card leading-10 p-4 m-2 bg-white rounded-lg w-72'
           >
-            <div className='shimmer-img w-full h-40 bg-cover bg-cente bg-slate-300' />
+            <div className='shimmer-img w-full h-56 bg-cover bg-cente bg-slate-300' />
             <p className='shimmer-name w-full h-5 bg-slate-300'></p>
             <p className='shimmer-cuisines w-full h-5 bg-slate-300'></p>
             <div className='shimmer-other-details font-bold flex w-full'>

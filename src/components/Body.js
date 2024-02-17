@@ -22,8 +22,11 @@ const Body = () => {
 
       let apiUrl = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${coordinates?.latitude}&lng=${coordinates?.longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
 
+      apiUrl = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.6215229&lng=85.1213044&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+
       const response = await fetch(apiUrl)
       const data = await response.json()
+
       const restaurantData =
         data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants ||
@@ -44,7 +47,9 @@ const Body = () => {
     return <h1>🔴 Offline, Please check you internet connection</h1>
   }
 
-  if (filteredRestaurantList.length == 0 && allRestaurantList.length > 0) {
+  // console.log("filteredRestaurantList", filteredRestaurantList)
+
+  if (filteredRestaurantList?.length == 0 && allRestaurantList.length > 0) {
     return (
       <div>
         <SearchBox
@@ -57,7 +62,7 @@ const Body = () => {
   }
 
   return (
-    <>
+    <div className=''>
       <SearchBox
         allRestaurantList={allRestaurantList}
         setFilteredRestaurantList={setFilteredRestaurantList}
@@ -67,8 +72,8 @@ const Body = () => {
         <Shimmer />
       ) : (
         <div>
-          <div className='restaurant-list justify-center drop-shadow-xl grid-rows-3 gap-2 flex  flex-wrap mt-4 p-4'>
-            {filteredRestaurantList.map((restaurant) => {
+          <div className='restaurant-list  justify-center drop-shadow-xl grid-rows-3 gap-2 flex  flex-wrap mt-4 p-4'>
+            {filteredRestaurantList?.map((restaurant) => {
               return (
                 <Link
                   key={restaurant.info.id}
@@ -83,7 +88,7 @@ const Body = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }
 

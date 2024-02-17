@@ -9,7 +9,7 @@ const loggedInUser = () => {
 
 const Title = () => {
   return (
-    <a className='logo-link ' href='/'>
+    <a className='logo-link' href='/'>
       <img src={Logo} id='logo' alt='logo' className='logo h-28 p-2' />
     </a>
   )
@@ -17,11 +17,12 @@ const Title = () => {
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+
   return (
-    <div className='header bg-white flex p-1 items-center rounded-2xl justify-between shadow-xl mb-12 mt-2'>
+    <div className='header scroll-smooth  bg-white flex p-1 items-center rounded-2xl justify-between shadow-xl mb-12 mt-2'>
       <Title />
-      <div className='nav-items p-2'>
-        <ul className='nav-items-ul flex space-x-3'>
+      <div className='nav-items p-4   text-gray-800'>
+        <ul className='nav-items-ul flex space-x-3  justify-center items-center'>
           <Link to='/'>
             <li className='list-item'>Home</li>
           </Link>
@@ -40,14 +41,14 @@ const Header = () => {
 
           {isLoggedIn ? (
             <button
-              className='auth-btn list-item'
+              className='auth-btn list-item bg-cyan-700 p-2 text-white rounded-lg'
               onClick={() => setIsLoggedIn(false)}
             >
               Logout
             </button>
           ) : (
             <button
-              className='auth-btn list-item'
+              className='auth-btn list-item  bg-cyan-700 p-2 text-white rounded-lg'
               onClick={() => setIsLoggedIn(true)}
             >
               Login
