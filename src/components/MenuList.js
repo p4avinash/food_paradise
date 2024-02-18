@@ -31,17 +31,17 @@ const MenuList = ({ restaurantMenu }) => {
 
   return (
     <div>
-      <h1 className='text-black font-bold text-2xl mb-4 mt-10'>Menulist</h1>
-      <ul>
+      {/* <h1 className='text-black font-bold text-2xl mb-4 mt-10'>Menulist</h1> */}
+      <ul className='mt-10'>
         {allMenuItems.map((item) => {
           return (
-            <div key={uid()} className='flex space-x-6'>
-              <li>{item?.card?.info?.name}</li>
+            <div key={uid()} className='flex relative  space-x-6 mb-4'>
+              <li className=''>{item?.card?.info?.name}</li>
               <button
                 onClick={() => handleAddItem(item?.card?.info)}
-                className='bg-cyan-700 text-white px-1 rounded-lg active:translate-y-1 active:scale-90 hover:ease-in-out duration-100 shadow-md'
+                className='absolute right-0 bg-cyan-700 text-white px-2 rounded-lg active:translate-y-1 active:scale-90 hover:ease-in-out duration-100 shadow-md'
               >
-                Add
+                Add To Cart
               </button>
             </div>
           )

@@ -59,7 +59,7 @@ const RestaurantMenu = () => {
           </p>
         </div>
       </div>
-      <div className='restaurant-menu'>
+      <div className='restaurant-menu sm:w-4/5 lg:w-3/6'>
         <MenuList restaurantMenu={restaurantMenu} />
       </div>
     </div>
