@@ -18,7 +18,7 @@ const Cart = () => {
       ) : (
         <button
           onClick={() => dispatch(clearCart())}
-          className='bg-red-700 text-white font-bold p-2 rounded-lg sm:mx-[15rem] lg:mx-[53rem] active:translate-y-1 active:scale-90 hover:ease-in-out duration-100 shadow-md mb-12'
+          className='bg-red-700 text-white font-bold p-2 rounded-lg mx-auto px-10 active:translate-y-1 active:scale-90 hover:ease-in-out duration-100 shadow-md mb-12'
         >
           Clear Cart
         </button>
