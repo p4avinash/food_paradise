@@ -7,9 +7,9 @@ const FoodItem = (item) => {
 
   return (
     <>
-      <div className=' my-2 rounded-lg'>
+      <div className=' my-1 rounded-lg'>
         {
-          <div className='flex p-2 shadow-lg rounded relative  m-4'>
+          <div className='flex p-2 shadow-lg rounded relative m-3 lg:mx-60 md:mx-12 sm:mx-12 bg-white'>
             <div className='flex items-center'>
               <img
                 className='w-28 h-28 rounded-lg mr-10'
