@@ -5,7 +5,7 @@ import userContext from "../utils/userContext"
 
 const About = () => {
   return (
-    <div>
+    <div className='flex flex-col  justify-start'>
       <h1>About Page</h1>
       <ProfileFunction type='Function' />
       <ProfileClass type='Class' />

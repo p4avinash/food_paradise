@@ -29,7 +29,7 @@ const SearchBox = ({ allRestaurantList, setFilteredRestaurantList }) => {
       /> */}
       <button
         type='button'
-        className='search-btn p-2 bg-cyan-700 rounded-lg text-white'
+        className='search-btn p-2 bg-cyan-700 rounded-lg text-white active:translate-y-1 active:scale-90 hover:ease-in-out duration-100 shadow-md'
         onClick={() => {
           const data = filterData(searchText, allRestaurantList)
           setFilteredRestaurantList(data)

@@ -9,6 +9,9 @@ import Contact from "./components/Contact"
 import RestaurantMenu from "./components/RestaurantMenu"
 import Shimmer from "./components/Shimmer"
 import userContext from "./utils/userContext"
+import Cart from "./components/Cart"
+import store from "./utils/store"
+import { Provider } from "react-redux"
 
 const Instamart = lazy(() => import("./components/Instamart"))
 const About = lazy(() => import("./components/About"))
@@ -25,15 +28,15 @@ const AppLayout = () => {
   // }
 
   return (
-    <>
-      <div className=''>
+    <Provider store={store}>
+      <div className='flex flex-col justify-between'>
         <userContext.Provider value={{ user, setUser }}>
           <Header />
           <Outlet />
           <Footer />
         </userContext.Provider>
       </div>
-    </>
+    </Provider>
   )
 }
 
@@ -75,6 +78,10 @@ const appRouter = createBrowserRouter([
             <Instamart />
           </Suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

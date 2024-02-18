@@ -27,8 +27,8 @@ const Instamart = () => {
   const [isExpanded, setIsExpanded] = useState("")
 
   return (
-    <div>
-      <h1 className='text-3xl p-2 m-2 font-bold'>Instamart</h1>
+    <div className='flex flex-col  justify-start'>
+      <h1 className='text-3xl p-2 m-2 font-bold '>Instamart</h1>
       <Section
         isExpanded={isExpanded === "about" ? true : false}
         setIsExpanded={setIsExpanded}
