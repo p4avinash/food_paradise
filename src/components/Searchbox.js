@@ -12,7 +12,7 @@ const SearchBox = ({ allRestaurantList, setFilteredRestaurantList }) => {
         type='text'
         name='search'
         placeholder='Search'
-        className='search-input p-2 rounded-lg'
+        className='search-input p-2 rounded-lg outline-none border-2 hover:border-green-600 duration-500 ease-in-out'
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
       />
@@ -29,7 +29,7 @@ const SearchBox = ({ allRestaurantList, setFilteredRestaurantList }) => {
       /> */}
       <button
         type='button'
-        className='search-btn p-2 bg-cyan-700 rounded-lg text-white active:translate-y-1 active:scale-90 hover:ease-in-out duration-100 shadow-md'
+        className='search-btn px-2 scale-90 bg-cyan-700 rounded-lg text-white active:translate-y-1 active:scale-75 hover:ease-in-out duration-100 shadow-md'
         onClick={() => {
           const data = filterData(searchText, allRestaurantList)
           setFilteredRestaurantList(data)

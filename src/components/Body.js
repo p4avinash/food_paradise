@@ -44,7 +44,11 @@ const Body = () => {
   const isOnline = useIsOnline()
 
   if (!isOnline) {
-    return <h1>🔴 Offline, Please check you internet connection</h1>
+    return (
+      <h1 className='mb-60 mt-40 flex text-center justify-center text-2xl font-bold'>
+        🔴 Offline, Please check you internet connection
+      </h1>
+    )
   }
 
   // console.log("filteredRestaurantList", filteredRestaurantList)

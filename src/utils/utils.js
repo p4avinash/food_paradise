@@ -1,7 +1,11 @@
 function filterData(searchText, restaurantList) {
-  const filteredData = restaurantList.filter((item) =>
-    item?.info?.name.toLowerCase().includes(searchText.toLowerCase())
-  )
+  // const cuisinesArray = restaurantList.map((item) => {
+  //   console.log(item?.info?.cuisines)
+  // })
+
+  const filteredData = restaurantList.filter((item) => {
+    return item?.info?.name.toLowerCase().includes(searchText.toLowerCase())
+  })
 
   return filteredData
 }
