@@ -11,6 +11,8 @@ const Cart = () => {
     return store.cart.items
   })
 
+  console.log("cartItems --- ", cartItems)
+
   return (
     <div className='flex flex-col justify-start'>
       {cartItems.length <= 0 ? (

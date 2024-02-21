@@ -2,7 +2,10 @@ import React from "react"
 
 const Shimmer = () => {
   return (
-    <div className='restaurant-list justify-center drop-shadow-xl grid-rows-3 gap-2 flex  flex-wrap mt-4 p-4'>
+    <div
+      data-testid='shimmer'
+      className='restaurant-list justify-center drop-shadow-xl grid-rows-3 gap-2 flex  flex-wrap mt-4 p-4'
+    >
       {Array(15)
         .fill("")
         .map((item, index) => (

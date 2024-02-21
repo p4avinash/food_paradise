@@ -7,7 +7,10 @@ const SearchBox = ({ allRestaurantList, setFilteredRestaurantList }) => {
   const { user, setUser } = useContext(userContext)
 
   return (
-    <div className='search-container flex justify-center p-3 pb-8'>
+    <div
+      data-testid='search-element'
+      className='search-container flex justify-center p-3 pb-8'
+    >
       <input
         type='text'
         name='search'

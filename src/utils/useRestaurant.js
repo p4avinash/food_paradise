@@ -14,8 +14,14 @@ const useRestaurant = (id) => {
         coordinates?.latitude
       }&lng=${coordinates?.longitude}&restaurantId=${id ? id : 0}`
 
+      // restaurantMenuURL = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.6215229&lng=85.1213044&restaurantId=${
+      //   id ? id : 0
+      // }`
+
       const response = await fetch(restaurantMenuURL)
       const data = await response.json()
+
+      console.log("data --- ", data?.data?.cards[2]?.card?.card?.info)
 
       // console.log(data?.data?.cards[0]?.card?.card.info)
 
